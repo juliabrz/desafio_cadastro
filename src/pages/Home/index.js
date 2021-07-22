@@ -1,12 +1,16 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom';
+import { ButtonLink, Conteiner, ButtonSpace,NavLinkModified, Title } from './styled'
+
 
 export default function Home(){
 
     return(
-        <div>
-            <button type="button">Click Me!</button>
-            <button type="button">Click Me!</button>
-        </div>
+        <Conteiner>
+            <Title> Sistema de cadastramento </Title>
+            <ButtonSpace>
+                <NavLinkModified to='/clientes'> <ButtonLink> Clientes</ButtonLink></NavLinkModified>
+                <NavLinkModified to='/produtos'> <ButtonLink> Produtos</ButtonLink></NavLinkModified>
+            </ButtonSpace>
+        </Conteiner>
     )
 }
