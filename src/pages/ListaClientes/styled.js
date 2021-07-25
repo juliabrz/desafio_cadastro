@@ -32,6 +32,22 @@ export const StyledTable = styled.table`
       color: #ffffff;
       background-color: #0463C4;
   }
+
+  @media (max-width: 480px) { 
+  thead {
+    display: none;
+  }
+  tr {
+    border-bottom: 1px solid #dddddd;
+    align-items: center;
+  }
+  td {
+    border: 0;
+  }
+  td:not(:first-child) {
+    display: block;
+  }
+}
 `;
 
 export const ButtonDel = styled.button`
