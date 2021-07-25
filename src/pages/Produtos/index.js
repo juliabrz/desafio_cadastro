@@ -1,19 +1,24 @@
 import React from 'react';
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
-
+import {NavLinkModified, 
+    Title, 
+    ButtonSpace, 
+    Button, 
+    MessagemCadastro,
+    Container,
+    ButtonSubmit,
+    Form, 
+    Input, 
+    NumberFormatModified,
+    Label,
+    InputForm } from '../Clientes/styled';
+import {Selecione, Descricao} from './styled'
 
 export default function Produtos(){
 
     const getLocalStorage = () => JSON.parse(localStorage.getItem('Carrinho')) ?? []
 
-    const [produtoInfo, setProdutoInfo] = useState({
-        id: "",
-        tipo: "",
-        descricao: "",
-        preco: "",
-        estoque: "",
-    });
+    const [produtoInfo, setProdutoInfo] = useState({});
 
     const [loading, setLoading] = useState(false);
     
@@ -41,36 +46,80 @@ export default function Produtos(){
 
 
     return(
-        <div>
-            <h1>Produto</h1>
-            <form onSubmit={handleSubmit(enviarProduto)}>
-                <input onChange={handleChange}
-                type="text"
-                name="id"
-                placeholder="Digite o seu nome"
-                />
-                <input
-                onChange={handleChange}
-                type="text"
-                name="tipo"
-                placeholder="Tipo"
-                />
-                <input
-                onChange={handleChange}
-                type="text"
-                name="descricao"
-                placeholder="descrição"
-                />
-                <input
-                onChange={handleChange}
-                type="text"
-                name="estoque"
-                placeholder="Estoque"
-                />
-                <button type="submit">{loading ? 'Cadastrando...' : 'Enviar'}</button>
-            </form>
-            {loading && <span>Produto cadastrado!</span>}
-            < NavLink to="/produtoslista">Ver inventario </NavLink>           
-        </div>
+        <Container>
+            <Title>Produto</Title>
+            <Form onSubmit={handleSubmit(enviarProduto)}>
+                <InputForm>
+                    <Label htmlFor="id">Código do produto: </Label>
+                    <NumberFormatModified onChange={handleChange}
+                    required
+                    id="id"
+                    name="id"
+                    placeholder="Código do produto"
+                    />
+                </InputForm>
+                <InputForm>
+                    <Label htmlFor="categoria">Categoria do produto: </Label>
+                    <Selecione required id="categoria" name="categoria" onChange={handleChange} defaultValue="">
+                        <option value='' disabled >Selecione a Categoria </option>
+                        <option value="eletrodomestico">Eletrodomésticos</option>
+                        <option value="móveis">Movéis</option>
+                        <option value="celulares">Celulares</option>
+                        <option value="outros">Outros</option>
+                    </Selecione>
+                </InputForm>
+                <InputForm>
+                    <Label htmlFor="id">Tipo do produto: </Label>
+                    <Input
+                    required
+                    id="tipo"
+                    onChange={handleChange}
+                    type="text"
+                    name="tipo"
+                    placeholder="Tipo do produto"
+                    />
+                </InputForm>
+                <InputForm>
+                    <Label htmlFor="marca">Marca do produto: </Label>
+                    <Input
+                    required
+                    id="marca"
+                    onChange={handleChange}
+                    type="text"
+                    name="marca"
+                    placeholder="Marca do produto"
+                    />
+                </InputForm>
+                <InputForm>
+                    <Label htmlFor="descricao">Descrição do produto: </Label>
+                    <Descricao
+                    required
+                    id="descricao"
+                    onChange={handleChange}
+                    type="text"
+                    name="descricao"
+                    placeholder="Descrição"
+                    />
+                </InputForm>
+                <InputForm>
+                    <Label htmlFor="quantidade">Quantidade: </Label>
+                    <Input
+                    required
+                    id="quantidade"
+                    type="number"
+                    min="0"
+                    onChange={handleChange}
+                    name="quantidade"
+                    placeholder="Quantidade em estoque"
+                    />
+                </InputForm>
+                <ButtonSubmit type="submit">{loading ? 'Cadastrando...' : 'Enviar'}</ButtonSubmit>
+            </Form>
+            {loading && <MessagemCadastro>Produto cadastrado!</MessagemCadastro>}
+            <ButtonSpace>
+                <NavLinkModified to="/"> <Button>Voltar</Button></NavLinkModified>
+                <NavLinkModified to="/produtoslista"> <Button>Ver inventario</Button> </NavLinkModified>
+            </ButtonSpace>         
+        </Container>
     )
 }
