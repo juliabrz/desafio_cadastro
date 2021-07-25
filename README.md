@@ -19,7 +19,7 @@ Estes são intens necessários para o cadastro, não sendo possível o cadastram
 
 Os dados dos produtos são armazenados usando LocalStorage. É possivel visualizar e apagar itens cadastrados, através da página de inventario.
 
-###Cadastramento de clientes:
+### Cadastramento de clientes:
 
 Funciona da mesma maneira que o cadastramento de produtos. 
 
