@@ -4,6 +4,7 @@ export const StyledTable = styled.table`
   border: none;
   /* border-collapse: collapse; */
   border-collapse: separate; 
+  width: 80%;
              
   td,
   th {

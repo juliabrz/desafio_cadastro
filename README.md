@@ -1,4 +1,4 @@
-# Segundo desafio do Hiring Coders , 
+# Segundo desafio do Hiring Coders
 
 Esse projeto foi desenvolvido em React utilizando o Create React App, React-router-DOM, styled-components, react-number-format.
 
